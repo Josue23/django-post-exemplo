@@ -1,8 +1,23 @@
-<h2>Aluno</h2>
 <form action="#" method="post">
     {% csrf_token %}
-    {{ form.as_p }}
+	<h2>Aluno</h2>
+    {{ formAluno.as_p }}
     <button name="enviarAluno" type="submit">Enviar</button>
 </form>
 <br>
 
+<form action="#" method="post">
+    {% csrf_token %}
+	<h2>Professor</h2>
+    {{ formProfessor.as_p }}
+    <button name="enviarProfessor" type="submit">Enviar</button>
+</form>
+<br>
+
+<form action="#" method="post">
+    {% csrf_token %}
+	<h2>Course</h2>
+    {{ formCourse.as_p }}
+    <button name="enviarCourse" type="submit">Enviar</button>
+</form>
+<br>

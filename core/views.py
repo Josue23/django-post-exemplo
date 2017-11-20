@@ -6,55 +6,27 @@ from .forms import AlunoForm, ProfessorForm, CourseForm
 
 def cadastro(request):
 	
-	# formAluno
+	
 	if request.method == 'POST':
+
 		formAluno = AlunoForm(request.POST)
-		if formAluno.is_valid():
+		if 'enviarAluno' in request.POST and formAluno.is_valid():
 			formAluno.save()
 			# print 'success'
+
+		formProfessor = ProfessorForm(request.POST)
+		if 'enviarProfessor' in request.POST and formProfessor.is_valid():
+			formProfessor.save()
+
+		formCourse = CourseForm(request.POST)
+		if 'enviarCourse' in request.POST and formCourse.is_valid():
+			formCourse.save()
+
 	else:
 		formAluno = AlunoForm()
+		formProfessor = ProfessorForm()
+		formCourse = CourseForm()
 
-	context = {'form': formAluno}
-
-	# formProfessor
-	if request.method == 'POST':
-		formProfessor = ProfessorForm(request.POST)
-		if formProfessor.is_valid():
-			formProfessor.save()
-			# print 'success'
-	else:
-		formProfessor = AlunoForm()
-
-	context = {'form': formProfessor}
-
-	# formCourse
-	if request.method == 'POST':
-		formCourse = CourseForm(request.POST)
-		if formCourse.is_valid():
-			formCourse.save()
-			# print 'success'
-	else:
-		formCourse = AlunoForm()
-
-	context = {'form': formCourse}
+	context = {'formAluno': formAluno, 'formProfessor': formProfessor, 'formCourse': formCourse}
 
 	return render(request, 'home.html', context)
-
-
-    
-
-
-# def aluno_add(request):
-	
-# 	if request.method == 'POST':
-# 		form = AlunoForm(request.POST)
-# 		if form.is_valid():
-# 			form.save()
-# 			# print 'success'
-# 	else:
-# 		form = AlunoForm()
-
-# 	context = {'form': form}
-
-# 	return render(request, 'home.html', context)
