@@ -1,0 +1,7 @@
+<h1>Cadastrar Aluno</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ aluno_form.as_p }}
+    <button type="submit">Salvar</button>
+</form>

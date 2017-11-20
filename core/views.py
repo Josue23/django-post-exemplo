@@ -3,10 +3,20 @@ from django.shortcuts import render
 from .models import Aluno, Professor, Course
 from .forms import AlunoForm, ProfessorForm, CourseForm
 
+def home(request):
+	return render(request, 'index.html')
+
+def aluno_add(request):
+	if request.method == 'POST':
+		alunoform = AlunoForm(request.POST)
+		if alunoform.is_valid:
+			alunoform.save()
+	else: 
+		alunoform = AlunoForm()
+	ctx = {'aluno_form': alunoform}
+	return render(request, 'aluno_add.html', ctx)
 
 def cadastro(request):
-	
-	
 	if request.method == 'POST':
 
 		formAluno = AlunoForm(request.POST)
