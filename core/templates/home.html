@@ -1,3 +1,7 @@
+{% extends "base.html" %}
+  
+{% block content %}
+
 <form action="#" method="post">
     {% csrf_token %}
 	<h2>Aluno</h2>
@@ -21,3 +25,5 @@
     <button name="enviarCourse" type="submit">Enviar</button>
 </form>
 <br>
+
+{% endblock content %}

@@ -1,3 +1,7 @@
+{% extends "base.html" %}
+
+{% block content %}
+
 <h1>Cadastrar Aluno</h1>
 
 <form method="POST">
@@ -5,3 +9,5 @@
     {{ aluno_form.as_p }}
     <button type="submit">Salvar</button>
 </form>
+    
+{% endblock content %}
