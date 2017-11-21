@@ -6,8 +6,10 @@ from .forms import AlunoForm, ProfessorForm, CourseForm
 from django.views import generic
 
 
-# def aluno_list(request):
-	# return render(request, 'aluno_list.html')
+def aluno_list(request):
+	aluno_list = Aluno.objects.all()
+	ctx = {'aluno_list': aluno_list}
+	return render(request, 'aluno_list.html', ctx)
 
 def index(request):
 	return render(request, 'index.html')
@@ -18,7 +20,7 @@ def aluno_add(request):
 		if alunoform.is_valid:
 			alunoform.save()
 			# import ipdb; ipdb.set_trace()
-			return HttpResponseRedirect('/aluno_list.html')
+		return redirect('aluno_list')
 	else: 
 		alunoform = AlunoForm()
 	ctx = {'aluno_form': alunoform}

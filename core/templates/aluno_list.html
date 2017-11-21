@@ -3,8 +3,35 @@
 
 {% block content %}
 
-{% for aluno in aluno_list %}
-<p>{{ aluno }}</p>
-{% endfor %}
+
+
+			<table class="table">
+			<thead>
+					<tr>
+						<th>
+							ID(pk)
+						</th>
+						<th>
+							Nome
+						</th>
+						<th>
+							sobrenome
+						</th>
+						<th>
+							Email
+						</th>
+					</tr>
+				</thead> 
+			<tbody>
+				{% for aluno in aluno_list  %}
+					<tr>
+						<td>{{ aluno.pk }}</td>
+						<td>{{ aluno.nome }}</td>
+						<td>{{ aluno.sobrenome }}</td>
+						<td>{{ aluno.email }}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+			</table>
 
 {% endblock %}
