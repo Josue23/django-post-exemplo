@@ -1,7 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.http import HttpResponse, HttpResponseRedirect
 
 from .models import Aluno, Professor, Course
 from .forms import AlunoForm, ProfessorForm, CourseForm
+from django.views import generic
+
+
+# def aluno_list(request):
+	# return render(request, 'aluno_list.html')
 
 def index(request):
 	return render(request, 'index.html')
@@ -11,6 +17,8 @@ def aluno_add(request):
 		alunoform = AlunoForm(request.POST)
 		if alunoform.is_valid:
 			alunoform.save()
+			# import ipdb; ipdb.set_trace()
+			return HttpResponseRedirect('/aluno_list.html')
 	else: 
 		alunoform = AlunoForm()
 	ctx = {'aluno_form': alunoform}
@@ -40,3 +48,5 @@ def cadastro(request):
 	context = {'formAluno': formAluno, 'formProfessor': formProfessor, 'formCourse': formCourse}
 
 	return render(request, 'home.html', context)
+
+	

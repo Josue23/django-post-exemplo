@@ -10,7 +10,7 @@ from django.core.urlresolvers import reverse
 class Aluno(models.Model):
 	nome = models.CharField('Nome', max_length=20)
 	sobrenome = models.CharField('Sobrenome', max_length=50)
-	email = models.EmailField(max_length=60,blank=True)
+	email = models.EmailField(max_length=60)
 
 	def __unicode__(self):
 		return self.nome
