@@ -1,15 +1,11 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, HttpResponseRedirect
+# from django.http import HttpResponse, HttpResponseRedirect
 
 from .models import Aluno, Professor, Course
 from .forms import AlunoForm, ProfessorForm, CourseForm
 from django.views import generic
 
 
-def aluno_list(request):
-	aluno_list = Aluno.objects.all()
-	ctx = {'aluno_list': aluno_list}
-	return render(request, 'aluno_list.html', ctx)
 
 def index(request):
 	return render(request, 'index.html')
@@ -52,3 +48,13 @@ def cadastro(request):
 	return render(request, 'home.html', context)
 
 	
+def aluno_list(request):
+	aluno_list = Aluno.objects.all()
+	ctx = {'aluno_list': aluno_list}
+	return render(request, 'aluno_list.html', ctx)
+
+
+def aluno_detail(request, pk):
+	aluno = Aluno.objects.get(pk=pk)
+	ctx = {'aluno': aluno}
+	return render(request, 'aluno_detail.html', ctx)

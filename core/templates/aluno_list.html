@@ -6,7 +6,7 @@
 			<thead>
 					<tr>
 						<th>
-							ID(pk)
+							ID (pk)
 						</th>
 						<th>
 							Nome
@@ -23,12 +23,13 @@
 				{% for aluno in aluno_list  %}
 					<tr>
 						<td>{{ aluno.pk }}</td>
-						<td>{{ aluno.nome }}</td>
+						<td><a href="{% url 'aluno_detail' aluno.pk %}">{{ aluno.nome }}</a></td>
 						<td>{{ aluno.sobrenome }}</td>
 						<td>{{ aluno.email }}</td>
 					</tr>
 				{% endfor %}
 			</tbody>
-			</table>
+		</table>
+
 
 {% endblock %}
