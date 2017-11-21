@@ -3,7 +3,7 @@ from django.shortcuts import render
 from .models import Aluno, Professor, Course
 from .forms import AlunoForm, ProfessorForm, CourseForm
 
-def home(request):
+def index(request):
 	return render(request, 'index.html')
 
 def aluno_add(request):

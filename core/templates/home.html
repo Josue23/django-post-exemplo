@@ -4,7 +4,7 @@
 
 <form action="#" method="post">
     {% csrf_token %}
-	<h2>Aluno</h2>
+	<h2>Cadastrar Aluno</h2>
     {{ formAluno.as_p }}
     <button name="enviarAluno" type="submit">Enviar</button>
 </form>
@@ -12,7 +12,7 @@
 
 <form action="#" method="post">
     {% csrf_token %}
-	<h2>Professor</h2>
+	<h2>Cadastrar Professor</h2>
     {{ formProfessor.as_p }}
     <button name="enviarProfessor" type="submit">Enviar</button>
 </form>
@@ -20,7 +20,7 @@
 
 <form action="#" method="post">
     {% csrf_token %}
-	<h2>Course</h2>
+	<h2>Cadastrar Course</h2>
     {{ formCourse.as_p }}
     <button name="enviarCourse" type="submit">Enviar</button>
 </form>
