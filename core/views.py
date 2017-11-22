@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from .models import Aluno, Professor, Course
 from .forms import AlunoForm, ProfessorForm, CourseForm
 from django.views import generic
+from django.db.models import Q
 
 
 def index(request):
@@ -52,6 +53,14 @@ def aluno_add(request):
 
 def aluno_list(request):
     aluno_list = Aluno.objects.all()
+    query = request.GET.get('q')
+    if query:
+        # query_list = query.split()
+        aluno_list = aluno_list.filter(
+            Q(nome__icontains=query)|
+            Q(sobrenome__icontains=query)|
+            Q(email__icontains=query)
+            )
     ctx = {'aluno_list': aluno_list}
     return render(request, 'core/aluno_list.html', ctx)
 
@@ -100,3 +109,7 @@ def professor_detail(request, pk):
     professor = Professor.objects.get(pk=pk)
     ctx = {'professor': professor}
     return render(request, 'core/professor_detail.html', ctx)
+
+
+# Display a page filtered by the search query.
+# busca alunos
