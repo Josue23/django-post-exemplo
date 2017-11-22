@@ -52,15 +52,18 @@ def aluno_add(request):
 
 
 def aluno_list(request):
+
+    # pega todos os objetos do model Aluno
     aluno_list = Aluno.objects.all()
+    # pega a busca do input com name="q" no aluno_list.html
     query = request.GET.get('q')
     if query:
         # query_list = query.split()
         aluno_list = aluno_list.filter(
-            Q(nome__icontains=query)|
-            Q(sobrenome__icontains=query)|
+            Q(nome__icontains=query) |
+            Q(sobrenome__icontains=query) |
             Q(email__icontains=query)
-            )
+        )
     ctx = {'aluno_list': aluno_list}
     return render(request, 'core/aluno_list.html', ctx)
 
@@ -101,6 +104,15 @@ def professor_add(request):
 
 def professor_list(request):
     professor_list = Professor.objects.all()
+    # pega a busca do input com name="q" no aluno_list.html
+    query = request.GET.get('q')
+    if query:
+        # query_list = query.split()
+        professor_list = professor_list.filter(
+            Q(nome__icontains=query) |
+            Q(sobrenome__icontains=query) |
+            Q(email__icontains=query)
+        )
     ctx = {'professor_list': professor_list}
     return render(request, 'core/professor_list.html', ctx)
 
