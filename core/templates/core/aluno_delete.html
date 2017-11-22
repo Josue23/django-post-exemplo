@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form action="{% url 'aluno_delete_confirm' aluno.pk %}" method="POST">
+	{% csrf_token %}
+	<p class="lead">Tem certeza que deseja deletar {{ aluno }}?</p>
+	<button type="submit" class="btn btn-danger">Deletar</button>
+</form>
+<a href="{% url 'aluno_list' %}" class="btn btn-default">Cancelar</button>
+{% endblock %}

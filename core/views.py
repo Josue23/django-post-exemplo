@@ -1,6 +1,6 @@
-from django.shortcuts import render, redirect
-# from django.http import HttpResponse, HttpResponseRedirect
-
+from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponse, HttpResponseRedirect
+from django.core.urlresolvers import reverse_lazy
 from .models import Aluno, Professor, Course
 from .forms import AlunoForm, ProfessorForm, CourseForm
 from django.views import generic
@@ -52,13 +52,14 @@ def aluno_add(request):
 
 
 def aluno_list(request):
-
     # pega todos os objetos do model Aluno
     aluno_list = Aluno.objects.all()
     # pega a busca do input com name="q" no aluno_list.html
     query = request.GET.get('q')
     if query:
         # query_list = query.split()
+
+        # filtra pelo campo nome OU campo sobrenome OU campo email
         aluno_list = aluno_list.filter(
             Q(nome__icontains=query) |
             Q(sobrenome__icontains=query) |
@@ -77,7 +78,7 @@ def aluno_detail(request, pk):
 def aluno_edit(request, pk):
     if request.is_ajax() and request.method == 'POST':
         pk = request.POST.get('pk')
-        aluno = get_object_or_404(Candidate, pk=pk)
+        aluno = get_object_or_404(Aluno, pk=pk)
         aluno.nome = request.POST.get('nome')
         aluno.sobrenome = request.POST.get('sobrenome')
         candidate.email = request.POST.get('email')
@@ -103,11 +104,14 @@ def professor_add(request):
 
 
 def professor_list(request):
+    # pega todos os objetos do model Professor
     professor_list = Professor.objects.all()
-    # pega a busca do input com name="q" no aluno_list.html
+    # pega a busca do input com name="q" no professor_list.html
     query = request.GET.get('q')
     if query:
         # query_list = query.split()
+
+        # filtra pelo campo nome OU campo sobrenome OU campo email
         professor_list = professor_list.filter(
             Q(nome__icontains=query) |
             Q(sobrenome__icontains=query) |
@@ -123,5 +127,14 @@ def professor_detail(request, pk):
     return render(request, 'core/professor_detail.html', ctx)
 
 
-# Display a page filtered by the search query.
-# busca alunos
+def aluno_delete(request, pk):
+    aluno = get_object_or_404(Aluno, pk=pk)
+    ctx = {'aluno': aluno}
+    return render(request, 'core/aluno_delete.html', ctx)
+
+
+def aluno_delete_confirm(request, pk):
+    if request.method == 'POST':
+        aluno = Aluno.objects.get(pk=pk)
+        aluno.delete()
+        return HttpResponseRedirect(reverse_lazy('aluno_list'))

@@ -32,6 +32,9 @@
 			<th>
 				Email
 			</th>
+			<th>
+				Deletar
+			</th>
 		</tr>
 	</thead> 
 	<tbody>
@@ -45,6 +48,12 @@
 
 				<td>{{ professor.sobrenome }}</td>
 				<td>{{ professor.email }}</td>
+			
+			<!-- delete professor-->
+              <td class="js-professor-delete" data-id="{{ professor.pk }}" data-first_name="{{ professor.nome }}">
+
+                <a id="professor_delete_{{ professor.pk }}" href="#modal-professor-delete" role="button" class="btn btn-danger" data-toggle="modal"><span class="fa fa-close"></span> Deletar</a>
+             </td>
 			</tr>
 		{% endfor %}
 	</tbody>
@@ -52,6 +61,38 @@
 {% else %}
 <p class="lead alert alert-warning">Nenhum professor cadastrado</p>
 {% endif %}
+
+	<div class="modal fade" id="modal-professor-delete" role="dialog" aria-labelledby="myModalLabelDelete" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+               
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                ×
+              </button>
+              <h4 class="modal-title" id="myModalLabel">
+                Modal title
+              </h4>
+            </div>
+            <form id="delete_professor_form" action="">
+              <div class="modal-body">
+                Tem certeza que voce quer deletar <span id="deletar"></span>?
+            </div>
+            <div class="modal-footer">
+               
+              <button type="button" class="btn btn-default" data-dismiss="modal">
+                Close
+              </button> 
+              <button type="submit" class="btn btn-danger">
+                Yes
+              </button>
+            </div>
+            </form>
+          </div>
+          
+        </div>
+        
+      </div>
 
 
 
