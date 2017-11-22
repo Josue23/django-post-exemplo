@@ -15,6 +15,7 @@ urlpatterns = [
     # url(r'^candidate/(?P<pk>\d+)/edit/$', v.candidate_edit, name='candidate_edit'),
     
     # professor
+    url(r'^professor/add/$', v.professor_add, name='professor_add'),
     url(r'^professor_list/$', v.professor_list, name='professor_list'),
     url(r'^professor/(?P<pk>\d+)/$', v.professor_detail, name='professor_detail'),
 

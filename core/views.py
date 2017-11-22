@@ -77,6 +77,19 @@ def aluno_edit(request, pk):
         return HttpResponseRedirect(reverse('aluno_list'))
 
 
+def professor_add(request):
+    if request.method == 'POST':
+        professorform = ProfessorForm(request.POST)
+        if professorform.is_valid:
+            professorform.save()
+            # import ipdb; ipdb.set_trace()
+        return redirect('professor_list')
+    else:
+        professorform = ProfessorForm()
+    ctx = {'professor_form': professorform}
+    return render(request, 'core/professor_add.html', ctx)
+
+
 def professor_list(request):
     professor_list = Professor.objects.all()
     ctx = {'professor_list': professor_list}

@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
+	
+	<h2>Alunos</h2>
 
 	<div class="pull-right">
     <form class="navbar-form navbar-left" role="search">
@@ -42,10 +44,10 @@
 			</tr>
 		{% endfor %}
 	</tbody>
-</table>
-{% else %}
-<p class="lead alert alert-warning">Nenhum aluno cadastrado</p>
-{% endif %}
+	</table>
+	{% else %}
+	<p class="lead alert alert-warning">Nenhum aluno cadastrado</p>
+	{% endif %}
 
 
 
