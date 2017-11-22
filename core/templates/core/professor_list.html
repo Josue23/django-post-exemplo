@@ -49,10 +49,14 @@
 				<td>{{ professor.sobrenome }}</td>
 				<td>{{ professor.email }}</td>
 			
-			<!-- delete professor-->
-              <td class="js-professor-delete" data-id="{{ professor.pk }}" data-first_name="{{ professor.nome }}">
+			<!-- modal delete professor  -  modal não está sendo utilizado-->
+             <!-- <td class="js-professor-delete" data-id="{{ professor.pk }}" data-first_name="{{ professor.nome }}">
 
-                <a id="professor_delete_{{ professor.pk }}" href="#modal-professor-delete" role="button" class="btn btn-danger" data-toggle="modal"><span class="fa fa-close"></span> Deletar</a>
+                <a id="professor_delete_{{ professor.pk }}" href="#modal-professor-delete" role="button" class="btn btn-danger" data-toggle="modal"><span class="fa fa-close"></span> Deletar</a> -->
+				
+				<td class="js-professor-delete" data-id="{{ professor.pk }}" >
+                <a href="{% url 'professor_delete' professor.pk %}" class="btn btn-danger"><span class="fa fa-close"></span> Deletar
+                </a>
              </td>
 			</tr>
 		{% endfor %}
@@ -62,6 +66,7 @@
 <p class="lead alert alert-warning">Nenhum professor cadastrado</p>
 {% endif %}
 
+	<!-- modal delete professor  -  modal não está sendo utilizado-->
 	<div class="modal fade" id="modal-professor-delete" role="dialog" aria-labelledby="myModalLabelDelete" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">

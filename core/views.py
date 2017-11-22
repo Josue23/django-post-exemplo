@@ -90,6 +90,19 @@ def aluno_edit(request, pk):
         return HttpResponseRedirect(reverse('aluno_list'))
 
 
+def aluno_delete(request, pk):
+    aluno = get_object_or_404(Aluno, pk=pk)
+    ctx = {'aluno': aluno}
+    return render(request, 'core/aluno_delete.html', ctx)
+
+
+def aluno_delete_confirm(request, pk):
+    if request.method == 'POST':
+        aluno = Aluno.objects.get(pk=pk)
+        aluno.delete()
+        return HttpResponseRedirect(reverse_lazy('aluno_list'))
+
+
 def professor_add(request):
     if request.method == 'POST':
         professorform = ProfessorForm(request.POST)
@@ -127,14 +140,14 @@ def professor_detail(request, pk):
     return render(request, 'core/professor_detail.html', ctx)
 
 
-def aluno_delete(request, pk):
-    aluno = get_object_or_404(Aluno, pk=pk)
-    ctx = {'aluno': aluno}
-    return render(request, 'core/aluno_delete.html', ctx)
+def professor_delete(request, pk):
+    professor = get_object_or_404(Professor, pk=pk)
+    ctx = {'professor': professor}
+    return render(request, 'core/professor_delete.html', ctx)
 
 
-def aluno_delete_confirm(request, pk):
+def professor_delete_confirm(request, pk):
     if request.method == 'POST':
-        aluno = Aluno.objects.get(pk=pk)
-        aluno.delete()
-        return HttpResponseRedirect(reverse_lazy('aluno_list'))
+        professor = Professor.objects.get(pk=pk)
+        professor.delete()
+        return HttpResponseRedirect(reverse_lazy('professor_list'))
