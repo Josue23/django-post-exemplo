@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+	<div class="pull-right">
+    <form class="navbar-form navbar-left" role="search">
+    <a class="btn btn-primary" href="{% url 'aluno_add' %}">Adicionar</a>
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Buscar" />
+      </div> 
+      <button type="submit" class="btn btn-default">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </form>
+  </div>
+	
+	{% if aluno_list %}
+	<table class="table">
+	<thead>
+		<tr>
+			<th>
+				ID (pk)
+			</th>
+			<th>
+				Nome
+			</th>
+			<th>
+				Sobrenome
+			</th>
+			<th>
+				Email
+			</th>
+		</tr>
+	</thead> 
+	<tbody>
+		{% for aluno in aluno_list  %}
+			<tr>
+				<td>{{ aluno.pk }}</td>
+				<td><span class="fa fa-user"></span><a href="{% url 'aluno_detail' aluno.pk %}">{{ aluno.nome }}</a></td>
+				<td>{{ aluno.sobrenome }}</td>
+				<td>{{ aluno.email }}</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% else %}
+<p class="lead alert alert-warning">Nenhum aluno cadastrado</p>
+{% endif %}
+
+
+
+{% endblock %}

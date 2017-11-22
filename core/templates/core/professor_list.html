@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+	
+	{% if professor_list %}
+	<table class="table">
+	<thead>
+		<tr>
+			<th>
+				ID (pk)
+			</th>
+			<th>
+				Nome
+			</th>
+			<th>
+				Sobrenome
+			</th>
+			<th>
+				Email
+			</th>
+		</tr>
+	</thead> 
+	<tbody>
+		{% for professor in professor_list  %}
+			<tr>
+				<td>{{ professor.pk }}</td>
+				<td><span class="fa fa-user"></span>
+				<a href="{% url 'professor_detail' professor.pk %}">{{ professor.nome }}
+				</a>
+				</td>
+
+				<td>{{ professor.sobrenome }}</td>
+				<td>{{ professor.email }}</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% else %}
+<p class="lead alert alert-warning">Nenhum professor cadastrado</p>
+{% endif %}
+
+
+
+{% endblock %}
