@@ -3,6 +3,22 @@
 {% block content %}
 
 	<table class="table">
+		<thead>
+				<tr>
+					<th>
+						ID (pk)
+					</th>
+					<th>
+						Nome
+					</th>
+					<th>
+						sobrenome
+					</th>
+					<th>
+						Email
+					</th>
+				</tr>
+		</thead> 
 		<tbody>
 				<tr>
 					<td>{{ aluno.pk }}</td>
@@ -17,11 +33,11 @@
 
 
 
-	<ul>
+<!-- <ul>
 		<li>{{ aluno.pk }}</li>
 		<li>{{ aluno.nome }}</li>
 		<li>{{ aluno.sobrenome }}</li>
 		<li>{{ aluno.email }}</li>
-	</ul>
+	</ul> -->
 
 {% endblock %}
