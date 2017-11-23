@@ -1,46 +1,38 @@
-{% extends "base.html" %}
-
-{% block content %}
-
-	<table class="table">
-		<thead>
-				<tr>
-					<th>
-						ID (pk)
-					</th>
-					<th>
-						Nome
-					</th>
-					<th>
-						sobrenome
-					</th>
-					<th>
-						Email
-					</th>
-					<th>
-						Deletar
-					</th>
-				</tr>
-		</thead> 
-		<tbody>
-				<tr>
-					<td>{{ professor.pk }}</td>
-					<td>{{ professor.nome }}</a></td>
-					<td>{{ professor.sobrenome }}</td>
-					<td>{{ professor.email }}</td>
-				</tr>
-		</tbody>
-	</table>
-
-
-
-
-
+{% extends "base.html" %} {% block content %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ID (pk)
+            </th>
+            <th>
+                Nome
+            </th>
+            <th>
+                sobrenome
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Deletar
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ professor.pk }}</td>
+            <td>{{ professor.nome }}</a>
+            </td>
+            <td>{{ professor.sobrenome }}</td>
+            <td>{{ professor.email }}</td>
+        </tr>
+    </tbody>
+</table>
 <!-- <ul>
 		<li>{{ professor.pk }}</li>
 		<li>{{ professor.nome }}</li>
 		<li>{{ professor.sobrenome }}</li>
 		<li>{{ professor.email }}</li>
 	</ul> -->
-
 {% endblock %}

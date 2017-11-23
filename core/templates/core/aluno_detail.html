@@ -1,43 +1,35 @@
-{% extends "base.html" %}
-
-{% block content %}
-
-	<table class="table">
-		<thead>
-				<tr>
-					<th>
-						ID (pk)
-					</th>
-					<th>
-						Nome
-					</th>
-					<th>
-						sobrenome
-					</th>
-					<th>
-						Email
-					</th>
-				</tr>
-		</thead> 
-		<tbody>
-				<tr>
-					<td>{{ aluno.pk }}</td>
-					<td>{{ aluno.nome }}</a></td>
-					<td>{{ aluno.sobrenome }}</td>
-					<td>{{ aluno.email }}</td>
-				</tr>
-		</tbody>
-	</table>
-
-
-
-
-
+{% extends "base.html" %} {% block content %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ID (pk)
+            </th>
+            <th>
+                Nome
+            </th>
+            <th>
+                sobrenome
+            </th>
+            <th>
+                Email
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ aluno.pk }}</td>
+            <td>{{ aluno.nome }}</a>
+            </td>
+            <td>{{ aluno.sobrenome }}</td>
+            <td>{{ aluno.email }}</td>
+        </tr>
+    </tbody>
+</table>
 <!-- <ul>
 		<li>{{ aluno.pk }}</li>
 		<li>{{ aluno.nome }}</li>
 		<li>{{ aluno.sobrenome }}</li>
 		<li>{{ aluno.email }}</li>
 	</ul> -->
-
 {% endblock %}

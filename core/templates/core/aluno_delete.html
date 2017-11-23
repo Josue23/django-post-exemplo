@@ -1,15 +1,12 @@
-{% extends "base.html" %}
-
-{% block content %}
-
+{% extends "base.html" %} {% block content %}
 <!-- <div class="text-center"> -->
 <div style="margin-left: 6%;">
-	<form action="{% url 'aluno_delete_confirm' aluno.pk %}" method="POST">
-		{% csrf_token %}
-		<p class="lead">Tem certeza que deseja deletar {{ aluno | capfirst }}?</p>
-		<button type="submit" class="btn btn-danger">Deletar</button>
-	</form>
-	<br />
-	<a href="{% url 'aluno_list' %}" class="btn btn-default">Cancelar</a>
+    <form action="{% url 'aluno_delete_confirm' aluno.pk %}" method="POST">
+        {% csrf_token %}
+        <p class="lead">Tem certeza que deseja deletar {{ aluno | capfirst }}?</p>
+        <button type="submit" class="btn btn-danger">Deletar</button>
+    </form>
+    <br />
+    <a href="{% url 'aluno_list' %}" class="btn btn-default">Cancelar</a>
 </div>
 {% endblock %}

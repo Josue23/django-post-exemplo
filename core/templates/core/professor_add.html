@@ -1,13 +1,9 @@
-{% extends "base.html" %}
-
-{% block content %}
-
-<h2>Cadastrar Professor</h2>
-
-<form method="POST">
-    {% csrf_token %}
-    {{ professor_form.as_p }}
-    <button type="submit">Salvar</button>
-</form>
-    
+{% extends "base.html" %} {% block content %}
+<div id="conteudo" style="margin-left: 3%">
+    <h2>Cadastrar Professor</h2>
+    <form method="POST">
+        {% csrf_token %} {{ professor_form.as_p }}
+        <button type="submit">Salvar</button>
+    </form>
+</div>
 {% endblock content %}

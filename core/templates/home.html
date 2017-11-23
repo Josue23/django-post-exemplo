@@ -1,29 +1,21 @@
-{% extends "base.html" %}
-  
-{% block content %}
-
-<form action="#" method="post">
-    {% csrf_token %}
-	<h2>Cadastrar Aluno</h2>
-    {{ formAluno.as_p }}
-    <button name="enviarAluno" type="submit">Enviar</button>
-</form>
-<br>
-
-<form action="#" method="post">
-    {% csrf_token %}
-	<h2>Cadastrar Professor</h2>
-    {{ formProfessor.as_p }}
-    <button name="enviarProfessor" type="submit">Enviar</button>
-</form>
-<br>
-
-<form action="#" method="post">
-    {% csrf_token %}
-	<h2>Cadastrar Course</h2>
-    {{ formCourse.as_p }}
-    <button name="enviarCourse" type="submit">Enviar</button>
-</form>
-<br>
-
-{% endblock content %}
+{% extends "base.html" %} {% block content %}
+<div id="conteudo" style="margin-left: 3%">
+    <form action="#" method="post">
+        {% csrf_token %}
+        <h2>Cadastrar Aluno</h2> {{ formAluno.as_p }}
+        <button name="enviarAluno" type="submit">Enviar</button>
+    </form>
+    <br>
+    <form action="#" method="post">
+        {% csrf_token %}
+        <h2>Cadastrar Professor</h2> {{ formProfessor.as_p }}
+        <button name="enviarProfessor" type="submit">Enviar</button>
+    </form>
+    <br>
+    <form action="#" method="post">
+        {% csrf_token %}
+        <h2>Cadastrar Course</h2> {{ formCourse.as_p }}
+        <button name="enviarCourse" type="submit">Enviar</button>
+    </form>
+</div>
+<br> {% endblock content %}
