@@ -40,6 +40,7 @@ INSTALLED_APPS = (
 
     # third apps
     'django_extensions',
+    'widget_tweaks',
 
     'core',
 )

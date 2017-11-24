@@ -25,9 +25,9 @@ class Professor(models.Model):
 		return self.nome
 
 class Course(models.Model):
-
 	nome = models.CharField('Nome', max_length=100)
 	slug = models.SlugField('Slug')
 	description = models.TextField('Descrição', blank=True)
+
 	def __unicode__(self):
 		return self.nome

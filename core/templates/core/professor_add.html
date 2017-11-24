@@ -3,7 +3,7 @@
     <h2>Cadastrar Professor</h2>
     <form method="POST">
         {% csrf_token %} {{ professor_form.as_p }}
-        <button type="submit">Salvar</button>
+        <button type="submit" class="btn btn-primary" >Salvar</button>
     </form>
 </div>
 {% endblock content %}
