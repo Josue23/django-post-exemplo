@@ -14,26 +14,28 @@ def index(request):
 def cadastro(request):
     if request.method == 'POST':
 
-        formAluno = AlunoForm(request.POST)
-        if 'enviarAluno' in request.POST and formAluno.is_valid():
-            formAluno.save()
+        alunoForm = AlunoForm(request.POST)
+        if 'enviarAluno' in request.POST and alunoForm.is_valid():
+            alunoForm.save()
             # print 'success'
 
-        formProfessor = ProfessorForm(request.POST)
-        if 'enviarProfessor' in request.POST and formProfessor.is_valid():
-            formProfessor.save()
+        professorForm = ProfessorForm(request.POST)
+        if 'enviarProfessor' in request.POST and professorForm.is_valid():
+            professorForm.save()
 
-        formCourse = CourseForm(request.POST)
-        if 'enviarCourse' in request.POST and formCourse.is_valid():
-            formCourse.save()
+        courseForm = CourseForm(request.POST)
+        if 'enviarCourse' in request.POST and courseForm.is_valid():
+            courseForm.save()
 
     else:
-        formAluno = AlunoForm()
-        formProfessor = ProfessorForm()
-        formCourse = CourseForm()
+        alunoForm = AlunoForm()
+        professorForm = ProfessorForm()
+        courseForm = CourseForm()
 
-    context = {'formAluno': formAluno,
-               'formProfessor': formProfessor, 'formCourse': formCourse}
+    context = {'alunoForm': alunoForm,
+               'professorForm': professorForm, 
+               'courseForm': courseForm
+               }
 
     return render(request, 'home.html', context)
 

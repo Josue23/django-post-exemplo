@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="col-sm-6">
+
+<h2>Cadastrar Aluno</h2>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ aluno_form.as_p }}
+    <button type="submit">Salvar</button>
+</form>
+</div>    
+{% endblock content %}

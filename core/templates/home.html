@@ -2,19 +2,19 @@
 <div id="conteudo" style="margin-left: 3%">
     <form action="#" method="post">
         {% csrf_token %}
-        <h2>Cadastrar Aluno</h2> {{ formAluno.as_p }}
+        <h2>Cadastrar Aluno</h2> {{ alunoForm.as_p }}
         <button name="enviarAluno" type="submit" class="btn btn-primary" >Enviar</button>
     </form>
     <br>
     <form action="#" method="post">
         {% csrf_token %}
-        <h2>Cadastrar Professor</h2> {{ formProfessor.as_p }}
+        <h2>Cadastrar Professor</h2> {{ professorForm.as_p }}
         <button name="enviarProfessor" type="submit" class="btn btn-primary" >Enviar</button>
     </form>
     <br>
     <form action="#" method="post">
         {% csrf_token %}
-        <h2>Cadastrar Course</h2> {{ formCourse.as_p }}
+        <h2>Cadastrar Course</h2> {{ courseForm.as_p }}
         <button name="enviarCourse" type="submit" class="btn btn-primary" >Enviar</button>
     </form>
 </div>
