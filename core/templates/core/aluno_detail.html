@@ -1,35 +1,29 @@
-{% extends "base.html" %} {% block content %}
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                ID (pk)
-            </th>
-            <th>
-                Nome
-            </th>
-            <th>
-                sobrenome
-            </th>
-            <th>
-                Email
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>{{ aluno.pk }}</td>
-            <td>{{ aluno.nome }}</a>
-            </td>
-            <td>{{ aluno.sobrenome }}</td>
-            <td>{{ aluno.email }}</td>
-        </tr>
-    </tbody>
-</table>
-<!-- <ul>
-		<li>{{ aluno.pk }}</li>
-		<li>{{ aluno.nome }}</li>
-		<li>{{ aluno.sobrenome }}</li>
-		<li>{{ aluno.email }}</li>
-	</ul> -->
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+.glyphicon {  margin-bottom: 10px;margin-right: 10px;}
+small {
+  display: block;
+  line-height: 1.428571429;
+  color: #999;
+}
+</style>
+
+<div class="col-xs-12 col-sm-6 col-md-6">
+    <div class="well well-sm">
+        <div class="row">
+            <div class="col-sm-6 col-md-4">
+                <img src="http://placehold.it/380x500" alt="" class="img-rounded img-responsive" />
+            </div>
+            <div class="col-sm-6 col-md-8">
+                <h4>{{ aluno.nome }} {{ aluno.sobrenome }}</h4>
+                <p><i class="glyphicon glyphicon-envelope"></i> {{ aluno.email }}</p>
+                <a href="{% url 'aluno_update' aluno.pk %}" class="btn btn-primary">Editar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock %}
