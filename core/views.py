@@ -33,7 +33,7 @@ def cadastro(request):
         courseForm = CourseForm()
 
     context = {'alunoForm': alunoForm,
-               'professorForm': professorForm, 
+               'professorForm': professorForm,
                'courseForm': courseForm
                }
 
@@ -90,6 +90,20 @@ def aluno_edit(request, pk):
         return JsonResponse(response)
     else:
         return HttpResponseRedirect(reverse('aluno_list'))
+
+
+def aluno_update(request, pk):
+    aluno = get_object_or_404(Aluno, pk=pk)
+    if request.method == 'POST':
+        # Instancia do form
+        aluno_form = AlunoForm(request.POST, instance=aluno)
+        if aluno_form.is_valid():
+            aluno_form.save()
+            return HttpResponseRedirect(reverse_lazy('aluno_detail', args=(pk)))
+    else:
+        aluno_form = AlunoForm(instance=aluno)
+    ctx = {'aluno_form': aluno_form}
+    return render(request, 'core/aluno_form.html', ctx)
 
 
 def aluno_delete(request, pk):
