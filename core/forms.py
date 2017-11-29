@@ -5,18 +5,65 @@ from .models import Aluno, Professor, Course
 
 
 class AlunoForm(ModelForm):
-	class Meta:
-		model = Aluno
-		fields = '__all__'
+    nome = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Nome'
+            }
+        ))
+    sobrenome = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Sobrenome'
+            }
+        ))
+    email = forms.EmailField(
+        widget=forms.TextInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'E-mail'
+            }
+        ))
+
+    class Meta:
+        model = Aluno
+        fields = ('nome', 'sobrenome', 'email')
+        # fields = '__all__'
 
 
 class ProfessorForm(ModelForm):
-	class Meta:
-		model = Professor
-		fields = '__all__'
+	nome = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Nome'
+            }
+        ))
+    sobrenome = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Sobrenome'
+            }
+        ))
+    email = forms.EmailField(
+        widget=forms.TextInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'E-mail'
+            }
+        ))
+
+    class Meta:
+        model = Professor
+        fields = ('nome', 'sobrenome', 'email')
+        # fields = '__all__'
 
 
 class CourseForm(ModelForm):
-	class Meta:
-		model = Course
-		fields = '__all__'
+
+    class Meta:
+        model = Course
+        fields = '__all__'

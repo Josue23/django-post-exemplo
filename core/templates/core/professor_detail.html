@@ -1,38 +1,29 @@
-{% extends "base.html" %} {% block content %}
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                ID (pk)
-            </th>
-            <th>
-                Nome
-            </th>
-            <th>
-                sobrenome
-            </th>
-            <th>
-                Email
-            </th>
-            <th>
-                Deletar
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>{{ professor.pk }}</td>
-            <td>{{ professor.nome }}</a>
-            </td>
-            <td>{{ professor.sobrenome }}</td>
-            <td>{{ professor.email }}</td>
-        </tr>
-    </tbody>
-</table>
-<!-- <ul>
-		<li>{{ professor.pk }}</li>
-		<li>{{ professor.nome }}</li>
-		<li>{{ professor.sobrenome }}</li>
-		<li>{{ professor.email }}</li>
-	</ul> -->
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+.glyphicon {  margin-bottom: 10px;margin-right: 10px;}
+small {
+  display: block;
+  line-height: 1.428571429;
+  color: #999;
+}
+</style>
+
+<div class="col-xs-12 col-sm-6 col-md-6">
+    <div class="well well-sm">
+        <div class="row">
+            <div class="col-sm-6 col-md-4">
+                <img src="http://placehold.it/380x500" alt="" class="img-rounded img-responsive" />
+            </div>
+            <div class="col-sm-6 col-md-8">
+                <h4>{{ professor.nome }} {{ professor.sobrenome }}</h4>
+                <p><i class="glyphicon glyphicon-envelope"></i> {{ professor.email }}</p>
+                <a href="{% url 'professor_update' professor.pk %}" class="btn btn-primary">Editar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock %}

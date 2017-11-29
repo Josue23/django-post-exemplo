@@ -2,7 +2,10 @@
 <div id="conteudo" style="margin-left: 3%">
     <form action="#" method="post">
         {% csrf_token %}
-        <h2>Cadastrar Aluno</h2> {{ alunoForm.as_p }}
+        <h2>Cadastrar Aluno</h2>
+       <!-- {{ alunoForm.as_p }} -->
+       {{ alunoForm.errors }}
+        {{ alunoForm.nome }}
         <button name="enviarAluno" type="submit" class="btn btn-primary" >Enviar</button>
     </form>
     <br>

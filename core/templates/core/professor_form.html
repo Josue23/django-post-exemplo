@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="col-sm-6">
+
+<h2>Editar Professor</h2>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ professor_form.as_p }}
+    <button type="submit" class="btn btn-primary">Salvar</button>
+</form>
+</div>    
+{% endblock content %}

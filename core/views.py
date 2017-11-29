@@ -83,7 +83,7 @@ def aluno_edit(request, pk):
         aluno = get_object_or_404(Aluno, pk=pk)
         aluno.nome = request.POST.get('nome')
         aluno.sobrenome = request.POST.get('sobrenome')
-        candidate.email = request.POST.get('email')
+        aluno.email = request.POST.get('email')
 
         aluno.save()
         response = {'status': 'update'}
@@ -154,6 +154,35 @@ def professor_detail(request, pk):
     professor = Professor.objects.get(pk=pk)
     ctx = {'professor': professor}
     return render(request, 'core/professor_detail.html', ctx)
+
+
+def professor_edit(request, pk):
+    if request.is_ajax() and request.method == 'POST':
+        pk = request.POST.get('pk')
+        professor = get_object_or_404(Professor, pk=pk)
+        professor.nome = request.POST.get('nome')
+        professor.sobrenome = request.POST.get('sobrenome')
+        professor.email = request.POST.get('email')
+
+        professor.save()
+        response = {'status': 'update'}
+        return JsonResponse(response)
+    else:
+        return HttpResponseRedirect(reverse('professor_list'))
+
+
+def professor_update(request, pk):
+    professor = get_object_or_404(Professor, pk=pk)
+    if request.method == 'POST':
+        # Instancia do form
+        professor_form = ProfessorForm(request.POST, instance=professor)
+        if professor_form.is_valid():
+            professor_form.save()
+            return HttpResponseRedirect(reverse_lazy('professor_detail', args=(pk)))
+    else:
+        professor_form = ProfessorForm(instance=professor)
+    ctx = {'professor_form': professor_form}
+    return render(request, 'core/professor_form.html', ctx)
 
 
 def professor_delete(request, pk):
