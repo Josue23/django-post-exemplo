@@ -9,7 +9,8 @@ class AlunoForm(ModelForm):
         widget=forms.TextInput(
             attrs={
                 'class': 'form-control',
-                'placeholder': 'Nome'
+                'placeholder': 'Nome',
+                'autofocus': 'autofocus'
             }
         ))
     sobrenome = forms.CharField(
@@ -32,9 +33,8 @@ class AlunoForm(ModelForm):
         fields = ('nome', 'sobrenome', 'email')
         # fields = '__all__'
 
-
 class ProfessorForm(ModelForm):
-	nome = forms.CharField(
+    nome = forms.CharField(
         widget=forms.TextInput(
             attrs={
                 'class': 'form-control',

@@ -1,24 +1,38 @@
-{% extends "base.html" %} {% block content %}
-<div id="conteudo" style="margin-left: 3%">
-    <form action="#" method="post">
-        {% csrf_token %}
-        <h2>Cadastrar Aluno</h2>
-       <!-- {{ alunoForm.as_p }} -->
-       {{ alunoForm.errors }}
-        {{ alunoForm.nome }}
-        <button name="enviarAluno" type="submit" class="btn btn-primary" >Enviar</button>
-    </form>
-    <br>
-    <form action="#" method="post">
-        {% csrf_token %}
-        <h2>Cadastrar Professor</h2> {{ professorForm.as_p }}
-        <button name="enviarProfessor" type="submit" class="btn btn-primary" >Enviar</button>
-    </form>
-    <br>
-    <form action="#" method="post">
-        {% csrf_token %}
-        <h2>Cadastrar Course</h2> {{ courseForm.as_p }}
-        <button name="enviarCourse" type="submit" class="btn btn-primary" >Enviar</button>
-    </form>
-</div>
-<br> {% endblock content %}
+{% extends "base.html" %} 
+{% block content %}
+    <div id="conteudo">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-6">
+                <form action="#" method="post">
+                    {% csrf_token %}
+                    <h2>Cadastrar Aluno</h2>
+                    {{ alunoForm.as_p }}
+                    {{ alunoForm.errors }}
+                    <button name="enviarAluno" type="submit" class="btn btn-primary" >Enviar</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-6">
+                <form action="#" method="post">
+                    {% csrf_token %}
+                    <h2>Cadastrar Professor</h2> 
+                    {{ professorForm.as_p }}
+                    <button name="enviarProfessor" type="submit" class="btn btn-primary" >Enviar</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-6">
+                <form action="#" method="post">
+                    {% csrf_token %}
+                    <h2>Cadastrar Course</h2> 
+                    {{ courseForm.as_p }}
+                    <button name="enviarCourse" type="submit" class="btn btn-primary" >Enviar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
