@@ -27,6 +27,10 @@ urlpatterns = [
     url(r'^professor/(?P<pk>\d+)/delete/confirm/$',
         v.professor_delete_confirm, name='professor_delete_confirm'),
 
+    # curso
+    url(r'^curso_list/$', v.curso_list, name='curso_list'),
+    url(r'^curso_add/$', v.curso_add, name='curso_add'),
+
     # cadastro com 3 forms
     url(r'^add/$', v.cadastro, name='cadastro'),
 

@@ -196,3 +196,33 @@ def professor_delete_confirm(request, pk):
         professor = Professor.objects.get(pk=pk)
         professor.delete()
         return HttpResponseRedirect(reverse_lazy('professor_list'))
+
+
+def curso_add(request):
+    if request.method == 'POST':
+        curso_form = CourseForm(request.POST)
+        if curso_form.is_valid:
+            curso_form.save()
+            # import ipdb; ipdb.set_trace()
+        return redirect('aluno_list')
+    else:
+        curso_form = CourseForm()
+    ctx = {'curso_form': curso_form}
+    return render(request, 'core/curso_add.html', ctx)
+
+
+def curso_list(request):
+    # pega todos os objetos do model Course
+    curso_list = Course.objects.all()
+    # pega a busca do input com name="q" no aluno_list.html
+    query = request.GET.get('q')
+    if query:
+        # query_list = query.split()
+        # filtra pelo campo nome OU campo sobrenome OU campo email
+        curso_list = curso_list.filter(
+            Q(nome__icontains=query) |
+            Q(slug__icontains=query) |
+            Q(description__icontains=query)
+        )
+    ctx = {'curso_list': curso_list}
+    return render(request, 'core/curso_list.html', ctx)

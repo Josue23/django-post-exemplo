@@ -38,7 +38,8 @@ class ProfessorForm(ModelForm):
         widget=forms.TextInput(
             attrs={
                 'class': 'form-control',
-                'placeholder': 'Nome'
+                'placeholder': 'Nome',
+                'autofocus': 'autofocus'
             }
         ))
     sobrenome = forms.CharField(
@@ -63,7 +64,30 @@ class ProfessorForm(ModelForm):
 
 
 class CourseForm(ModelForm):
+    nome = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Nome',
+                'autofocus': 'autofocus'
+            }
+        ))
+    slug = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Slug'
+            }
+        ))
+    description = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Descrição do curso'
+            }
+        ))
 
     class Meta:
         model = Course
-        fields = '__all__'
+        fields = ('nome', 'slug', 'description')
+        # fields = '__all__'
