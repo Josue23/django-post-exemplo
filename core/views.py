@@ -204,7 +204,7 @@ def curso_add(request):
         if curso_form.is_valid:
             curso_form.save()
             # import ipdb; ipdb.set_trace()
-        return redirect('aluno_list')
+        return redirect('curso_list')
     else:
         curso_form = CourseForm()
     ctx = {'curso_form': curso_form}
