@@ -80,7 +80,7 @@ class CourseForm(ModelForm):
             }
         ))
     description = forms.CharField(
-        widget=forms.TextInput(
+        widget=forms.Textarea(
             attrs={
                 'class': 'form-control',
                 'placeholder': 'Descrição do curso'
